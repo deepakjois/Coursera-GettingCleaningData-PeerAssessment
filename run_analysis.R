@@ -38,5 +38,6 @@ names(tidydata) <- c("Subject","Activity_Code", "Activity", features[c(meanCols,
 write.table(tidydata, file="./tidydata.txt", sep="\t", row.names=FALSE)
 
 # Create a second, independent tidy data set with the average of each variable for each activity and each subject.
+library(dplyr)
 summary <- tidydata %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
 write.table(summary, file="./summary.txt", sep="\t", row.names=FALSE)
